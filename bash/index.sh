@@ -19,9 +19,9 @@ pow() {
         set $1 $(($2 - 1)) $(($1 * $3))
     done
 
-    # Add power value to array.
     power_value=$3
 
+    # Add power value to array.
     if [ $power_value -le $user_num ]; then
         powers+=($3)
     fi
