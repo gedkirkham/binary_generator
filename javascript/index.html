@@ -1,0 +1,65 @@
+<form id="binary_generator_form">
+    <label for="number">Number:</label>
+    <input type="number" required name="number" id="number" />
+    <button type="submit">Submit</button>
+</form>
+
+<script>
+    binary_generator_form.onsubmit = async (e) => {
+        e.preventDefault();
+
+        const FORM_KEY_VAL = {};
+        const FORM_DATA = new FormData(binary_generator_form);
+        for (const [name, value] of FORM_DATA) {
+            FORM_KEY_VAL[name] = value;
+        }
+
+        function pow_calc({ power_multiplier, power_argument = 1 }) {
+            // Set powers of number and add values to array.
+
+            // Loop and update positional arguments.
+            // power_multiplier decrements upon each loop to allow power calculation to occur.
+            // power_argument is the resulting calculated power value.# Add power value to array
+            while (power_multiplier > 0) {
+                power_argument = 2 * power_argument;
+                power_multiplier -= 1;
+            }
+
+            // Add power value to array
+            if (power_argument < user_num) {
+                powers.push(power_argument);
+            }
+
+            return power_argument;
+        }
+
+        let power_value = 0;
+        let power_multiplier = 0;
+        let powers = [];
+        let user_num = +FORM_KEY_VAL["number"];
+
+        // Loop while last set power value is less than users provided number.
+        while (power_value < user_num) {
+            power_value = pow_calc({ power_multiplier: power_multiplier });
+            power_multiplier += 1;
+        }
+
+        // Loop by subtracting power value from user number. If by subtracting value
+        // from user number it becomes negative, add 0 digit rather than 1 to binary
+        // string.
+        let binary_calc = user_num;
+        let binary_string = "";
+        while (powers.length > 0) {
+            if (binary_calc - powers[powers.length - 1] >= 0) {
+                binary_calc = binary_calc - powers[powers.length - 1];
+                binary_string += "1";
+            } else {
+                binary_string += "0";
+            }
+
+            powers.pop();
+        }
+
+        alert(`Binary representation: ${binary_string}`);
+    };
+</script>
