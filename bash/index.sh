@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Number (base-10) to binary (base-2) converter."
+echo "Decimal (base-10) to binary (base-2) converter."
 read -p "Enter your number: " user_num
 
 powers=()
@@ -28,10 +28,10 @@ pow() {
 }
 
 # Loop while last set power value is less than users provided number.
-power_multiplier=0
+exponent=0
 while [ $power_value -lt $user_num ]; do
-    pow 2 $power_multiplier
-    power_multiplier=$((power_multiplier + 1))
+    pow 2 $exponent
+    exponent=$((exponent + 1))
 done
 
 # Loop by subtracting power value from user number. If by subtracting value
