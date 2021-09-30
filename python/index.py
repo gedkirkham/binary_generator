@@ -1,28 +1,23 @@
 #!/usr/bin/env python3
 
-print("Number (base-10) to binary (base-2) converter.")
+print("Decimal (base-10) to binary (base-2) converter.")
 user_num = int(input("Enter your number: "))
 
 power_value = 0
-power_argument = 1
 powers = []
 
 
-def pow_calc(power_multiplier, power_argument=1):
+def pow_calc(power_multiplier):
     # Set powers of number and add values to array.
 
-    # Loop and update positional arguments.
-    # power_multiplier decrements upon each loop to allow power calculation to occur.
-    # power_argument is the resulting calculated power value.
-    while power_multiplier > 0:
-        power_argument = 2 * power_argument
-        power_multiplier -= 1
+    # ans is the resulting calculated power value.
+    ans = 2**power_multiplier
 
     # Add power value to array
-    if power_argument < user_num:
-        powers.append(power_argument)
+    if ans < user_num:
+        powers.append(ans)
 
-    return power_argument
+    return ans
 
 
 # Loop while last set power value is less than users provided number.
